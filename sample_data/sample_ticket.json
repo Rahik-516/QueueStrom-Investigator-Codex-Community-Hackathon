@@ -1,0 +1,36 @@
+{
+  "ticket_id": "TCK-1001",
+  "customer_id": "CUST-42",
+  "complaint": "I sent 5000 BDT to merchant QuickMart yesterday at 2:30 PM via cash_out but the goods were never delivered. Please look into this.",
+  "transaction_history": [
+    {
+      "transaction_id": "TX-9001",
+      "timestamp": "2026-06-25T08:30:00Z",
+      "amount": -150.00,
+      "currency": "BDT",
+      "counterparty": "QuickMart",
+      "direction": "debit",
+      "status": "completed",
+      "reference": "QMK-001"
+    },
+    {
+      "transaction_id": "TX-9002",
+      "timestamp": "2026-06-25T14:32:00Z",
+      "amount": -5000.00,
+      "currency": "BDT",
+      "counterparty": "QuickMart",
+      "direction": "debit",
+      "status": "completed",
+      "reference": "QMK-002"
+    },
+    {
+      "transaction_id": "TX-9003",
+      "timestamp": "2026-06-25T18:10:00Z",
+      "amount": 1200.00,
+      "currency": "BDT",
+      "counterparty": "Salary Inc",
+      "direction": "credit",
+      "status": "completed"
+    }
+  ]
+}

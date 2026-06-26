@@ -1,0 +1,6 @@
+INFO:     127.0.0.1:5457 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10272 - "GET /health HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10273 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:10274 - "POST /analyze-ticket HTTP/1.1" 500 Internal Server Error
+INFO:     127.0.0.1:10276 - "POST /analyze-ticket HTTP/1.1" 400 Bad Request
+INFO:     127.0.0.1:10277 - "POST /analyze-ticket HTTP/1.1" 500 Internal Server Error

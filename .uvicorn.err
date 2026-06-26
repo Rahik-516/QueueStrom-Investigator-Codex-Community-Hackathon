@@ -1,0 +1,487 @@
+INFO:     Started server process [8032]
+INFO:     Waiting for application startup.
+2026-06-26 22:59:54,657 INFO [queuestorm] startup: provider=openai model=gpt-4o-mini
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-06-26 22:59:58,062 INFO [queuestorm] GET /health -> 200 (0.5ms) rid=ab6fb174-bfca-4a9d-9700-7b7e4d63fee9
+2026-06-26 23:01:43,911 INFO [queuestorm] GET /health -> 200 (0.4ms) rid=c4d4432a-8e85-41cd-b6b9-fe3d079c7842
+2026-06-26 23:01:43,950 INFO [queuestorm] GET /docs -> 200 (0.3ms) rid=34e6dec7-86c8-4bdf-8f5c-fe38eb252b1c
+2026-06-26 23:01:43,986 INFO [llm_engine] analyze_ticket start ticket_id=TCK-1001 provider=openai model=gpt-4o-mini
+2026-06-26 23:01:44,899 INFO [httpx] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-06-26 23:01:45,830 INFO [httpx] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-06-26 23:01:45,831 ERROR [instructor] Failed after retries: <bound method Future.exception of <Future at 0x1ef88111d10 state=finished raised AuthenticationError>>
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 271, in retry_async
+    response: ChatCompletion = await func(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2028, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1742, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1549, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 267, in retry_async
+    async for attempt in max_retries:
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x1ef88111d10 state=finished raised AuthenticationError>]
+2026-06-26 23:01:45,835 ERROR [queuestorm] unhandled_exception rid=6f869beb-9bcb-441b-ba48-8723f312c79f
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 271, in retry_async
+    response: ChatCompletion = await func(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2028, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1742, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1549, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 267, in retry_async
+    async for attempt in max_retries:
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x1ef88111d10 state=finished raised AuthenticationError>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\ismra\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\project\venv311\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 89, in add_request_context
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 202, in analyze_ticket_endpoint
+    llm_response: ResponseModel = await analyze_ticket(payload)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\llm_engine.py", line 204, in analyze_ticket
+    response: ResponseModel = await client.chat.completions.create(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\client.py", line 311, in create
+    return await self.create_fn(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\patch.py", line 255, in new_create_async
+    response = await retry_async(
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 306, in retry_async
+    raise InstructorRetryException(
+instructor.exceptions.InstructorRetryException: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 271, in retry_async
+    response: ChatCompletion = await func(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2028, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1742, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1549, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 267, in retry_async
+    async for attempt in max_retries:
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x1ef88111d10 state=finished raised AuthenticationError>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\ismra\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\project\venv311\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 89, in add_request_context
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 202, in analyze_ticket_endpoint
+    llm_response: ResponseModel = await analyze_ticket(payload)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\llm_engine.py", line 204, in analyze_ticket
+    response: ResponseModel = await client.chat.completions.create(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\client.py", line 311, in create
+    return await self.create_fn(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\patch.py", line 255, in new_create_async
+    response = await retry_async(
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 306, in retry_async
+    raise InstructorRetryException(
+instructor.exceptions.InstructorRetryException: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+2026-06-26 23:01:45,878 INFO [queuestorm] POST /analyze-ticket -> 400 (0.9ms) rid=287a0b89-3908-4379-aae2-9c87e57069c0
+2026-06-26 23:01:45,914 INFO [llm_engine] analyze_ticket start ticket_id=TCK-9999 provider=openai model=gpt-4o-mini
+2026-06-26 23:01:46,209 INFO [httpx] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-06-26 23:01:46,992 INFO [httpx] HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 401 Unauthorized"
+2026-06-26 23:01:46,993 ERROR [instructor] Failed after retries: <bound method Future.exception of <Future at 0x1ef886750d0 state=finished raised AuthenticationError>>
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 271, in retry_async
+    response: ChatCompletion = await func(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2028, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1742, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1549, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 267, in retry_async
+    async for attempt in max_retries:
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x1ef886750d0 state=finished raised AuthenticationError>]
+2026-06-26 23:01:46,995 ERROR [queuestorm] unhandled_exception rid=64d771d3-623c-466d-a0b9-347e06470082
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 271, in retry_async
+    response: ChatCompletion = await func(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2028, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1742, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1549, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 267, in retry_async
+    async for attempt in max_retries:
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x1ef886750d0 state=finished raised AuthenticationError>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\ismra\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\project\venv311\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 89, in add_request_context
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 202, in analyze_ticket_endpoint
+    llm_response: ResponseModel = await analyze_ticket(payload)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\llm_engine.py", line 204, in analyze_ticket
+    response: ResponseModel = await client.chat.completions.create(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\client.py", line 311, in create
+    return await self.create_fn(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\patch.py", line 255, in new_create_async
+    response = await retry_async(
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 306, in retry_async
+    raise InstructorRetryException(
+instructor.exceptions.InstructorRetryException: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+ERROR:    Exception in ASGI application
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 271, in retry_async
+    response: ChatCompletion = await func(*args, **kwargs)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\resources\chat\completions\completions.py", line 2028, in create
+    return await self._post(
+           ^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1742, in post
+    return await self.request(cast_to, opts, stream=stream, stream_cls=stream_cls)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\openai\_base_client.py", line 1549, in request
+    raise self._make_status_error_from_response(err.response) from None
+openai.AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 267, in retry_async
+    async for attempt in max_retries:
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 166, in __anext__
+    do = await self.iter(retry_state=self._retry_state)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\asyncio\__init__.py", line 153, in iter
+    result = await action(retry_state)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\_utils.py", line 99, in inner
+    return call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\tenacity\__init__.py", line 419, in exc_check
+    raise retry_exc from fut.exception()
+tenacity.RetryError: RetryError[<Future at 0x1ef886750d0 state=finished raised AuthenticationError>]
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\project\venv311\Lib\site-packages\uvicorn\protocols\http\httptools_impl.py", line 409, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\uvicorn\middleware\proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\errors.py", line 187, in __call__
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\errors.py", line 165, in __call__
+    await self.app(scope, receive, _send)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 185, in __call__
+    with collapse_excgroups():
+  File "C:\Users\ismra\AppData\Local\Programs\Python\Python311\Lib\contextlib.py", line 155, in __exit__
+    self.gen.throw(typ, value, traceback)
+  File "D:\project\venv311\Lib\site-packages\starlette\_utils.py", line 82, in collapse_excgroups
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 187, in __call__
+    response = await self.dispatch_func(request, call_next)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 89, in add_request_context
+    response = await call_next(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 163, in call_next
+    raise app_exc
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\base.py", line 149, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+  File "D:\project\venv311\Lib\site-packages\starlette\middleware\exceptions.py", line 62, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 715, in __call__
+    await self.middleware_stack(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 735, in app
+    await route.handle(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 288, in handle
+    await self.app(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 76, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\project\venv311\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+  File "D:\project\venv311\Lib\site-packages\starlette\routing.py", line 73, in app
+    response = await f(request)
+               ^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 301, in app
+    raw_response = await run_endpoint_function(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\fastapi\routing.py", line 212, in run_endpoint_function
+    return await dependant.call(**values)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\main.py", line 202, in analyze_ticket_endpoint
+    llm_response: ResponseModel = await analyze_ticket(payload)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\llm_engine.py", line 204, in analyze_ticket
+    response: ResponseModel = await client.chat.completions.create(
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\client.py", line 311, in create
+    return await self.create_fn(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\patch.py", line 255, in new_create_async
+    response = await retry_async(
+               ^^^^^^^^^^^^^^^^^^
+  File "D:\project\venv311\Lib\site-packages\instructor\retry.py", line 306, in retry_async
+    raise InstructorRetryException(
+instructor.exceptions.InstructorRetryException: Error code: 401 - {'error': {'message': 'Incorrect API key provided: dummy-ke*******moke. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
