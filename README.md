@@ -5,8 +5,7 @@ LLM that is **structurally constrained** by [`instructor`](https://github.com/jx
 to emit a strict Pydantic V2 schema, plus **deterministic regex guardrails**
 that hard-block any unsafe language before it can ever reach a customer.
 
-> Built for a 4.5-hour hackathon. Production-shaped: typed schemas, multi-stage
-> Dockerfile, lifespan-based config validation, and zero stack-trace leakage.
+
 
 ---
 
