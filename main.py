@@ -170,6 +170,18 @@ async def _unhandled(request: Request, exc: Exception):
 # ---------------------------------------------------------------------------
 # Routes
 # ---------------------------------------------------------------------------
+@app.get("/", tags=["meta"])
+async def root():
+    """Service info — shown when someone visits the base URL in a browser."""
+    return {
+        "service": "QueueStorm Investigator AI",
+        "version": "1.0.0",
+        "docs": "/docs",
+        "endpoints": {
+            "health": "GET /health",
+            "analyze": "POST /analyze-ticket",
+        },
+    }
 
 @app.get("/health", response_model=HealthResponse, tags=["ops"])
 async def health() -> HealthResponse:
